@@ -1,0 +1,43 @@
+@model CaseModeModel
+
+<form asp-controller="CaseMode" asp-action="Update" method="POST">
+  <div class="form-group">
+    <label for="Name">Nome do Case Mode</label>
+    <input type="text" asp-for="Name" class="form-control">
+    <span asp-validation-for="Name"></span>  
+  </div>
+    <div class="form-group">
+    <label for="Description">Descrição</label>
+    <input type="text" asp-for="Description" class="form-control">
+    <span asp-validation-for="Description"></span>  
+  </div>
+  <div class="form-group">
+    <label for="Price">Preço</label>
+    <input id="dinheiro" type="text" asp-for="Price" class="form-control">
+    <span asp-validation-for="Price"></span>  
+  </div>
+  <div class="form-group">
+    <label for="ImageUrl">Imagem</label>
+    <input type="text" asp-for="ImageUrl" class="form-control">
+    <span asp-validation-for="ImageUrl"></span>  
+  </div>  
+  <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>
+
+@section Scripts {        
+    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // retira as validações de javascript de todos os inputs, somente a que verifica se o número é válido...
+            // vc pode usar máscaras ou regex para verificar se ele é um número ou não e permitir que seja digitado
+            // apenas valores numéricos...
+            $('input[type=text]').each(function () {
+                $(this).rules('remove', 'number');
+            });
+        });
+        $(document).ready(function () {
+            $('#dinheiro').mask('#.##0,00', { reverse: true });
+        });
+    </script>
+
+}
